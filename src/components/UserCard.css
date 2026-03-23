@@ -1,0 +1,11 @@
+.user-container{
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+   border-radius: 40px;
+}
+
