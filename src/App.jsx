@@ -317,38 +317,80 @@ export default App */}
 // export default App
 
 
-import React, { useState, useMemo } from 'react'; // 1. 'u' small hoga hooks mein
+// import React, { useState, useMemo } from 'react'; // 1. 'u' small hoga hooks mein
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const [input, setInput] = useState(0);
+// const App = () => {
+//   const [count, setCount] = useState(0);
+//   const [input, setInput] = useState(0);
 
-  // Ye function simulate kar raha hai ek bhari kaam (Expensive Task)
-  function expensiveTask(num) {
-    console.log("Expensive Task Running...");
-    for (let i = 0; i < 1000000000; i++) { } // Loop ko thoda bada kiya taaki fark mehsoos ho
-    return num * 2;
-  }
+//   // Ye function simulate kar raha hai ek bhari kaam (Expensive Task)
+//   function expensiveTask(num) {
+//     console.log("Expensive Task Running...");
+//     for (let i = 0; i < 1000000000; i++) { } // Loop ko thoda bada kiya taaki fark mehsoos ho
+//     return num * 2;
+//   }
 
-let doubleValue = useMemo(() => expensiveTask(input), [input]);
+// let doubleValue = useMemo(() => expensiveTask(input), [input]);
+//   return (
+//     <div>
+//       <button onClick={() => setCount(count + 1)}>
+//         Increment Count
+//       </button>
+//       <p>Count (No re-calculation): {count}</p>
+      
+//       <hr />
+      
+//       <input 
+//         type="number"
+//         placeholder='Enter number'
+//         value={input}
+//         onChange={(e) => setInput(e.target.value)}
+//       />
+//       <p>Double Value (Memoized): {doubleValue}</p>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+import { useCallback, useState } from 'react'
+import './App.css'
+import ChildComponent from './components/ChildComponent';
+import ExpensiveComponent from './components/ExpensiveComponent';
+
+function App() {
+  // const [count, setCount] = useState(0);
+
+
+  // const handleClick = useCallback(() => {
+  //   setCount(count+1);
+  // }, []);
+
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>
-        Increment Count
-      </button>
-      <p>Count (No re-calculation): {count}</p>
-      
-      <hr />
-      
-      <input 
-        type="number"
-        placeholder='Enter number'
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <p>Double Value (Memoized): {doubleValue}</p>
+      <ExpensiveComponent />
     </div>
+    // <div>
+    //   <div>
+    //     Count: {count}
+    //   </div>
+    //   <br/>
+    //   <div>
+    //     <button onClick={handleClick}>
+    //       Increment 
+    //     </button>
+    //   </div>
+    //   <br/> <br/>
+
+    //   <div>
+    //     <ChildComponent 
+    //       buttonName="Click me" 
+    //       handleClick={handleClick}
+    //     />
+    //   </div>
+    // </div>
   )
 }
 
-export default App;
+export default App
